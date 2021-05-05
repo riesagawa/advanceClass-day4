@@ -13,27 +13,28 @@
   <div class="container">
     <div class="app-container">
       <h1 class="title">DailyTrial Shopping</h1>
-      <div class="cards-container">
-
-        <?php foreach($products as $product): ?>
-        <div class="card">
-          <img class="card-image" 
-            src="<?php echo $product["image"]; ?>" alt="">
-          <p class="card-title">
-            <?php echo $product["name"]; ?>
-          </p>
-          <div class="flex justify-between">
-            <p class="card-price">
-              <?php echo displayPrice($product["price"]); ?>
-            </p>
-            <input min="0" class="item-number" type="number" value="0">
-          </div>
+      <form id="cart" method="post" action="cart.php"><!---->
+        <div class="cards-container">
+          <?php foreach($products as $product): ?>
+            <div class="card">
+              <img class="card-image" 
+                src="<?php echo $product["image"]; ?>" alt="">
+              <p class="card-title">
+                <?php echo $product["name"]; ?>
+              </p>
+              <div class="flex justify-between">
+                <p class="card-price">
+                  <?php echo displayPrice($product["price"]); ?>
+                </p>
+                <input name="<?php echo $product["id"]; ?>" min="0" class="item-number" type="number" value="0">
+              </div>
+            </div>
+          <?php endforeach; ?>
         </div>
-        <?php endforeach; ?>
+      </form>
 
-      </div>
       <div class="btn-footer bg-white">
-        <input class="cart-btn" type="submit" name="submit" value="カートに追加" />
+        <input form="cart" class="cart-btn" type="submit" name="submit" value="カートに追加" />
       </div>
     </div>
   </div>
